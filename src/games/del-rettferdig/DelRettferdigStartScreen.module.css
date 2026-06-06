@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 3vw, 20px);
+  padding: clamp(32px, 8dvh, 64px) clamp(20px, 5vw, 40px);
+  border-radius: var(--radius-card);
+  background: #f0fffe;
+  border: 3px dashed var(--color-secondary);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.emoji {
+  font-size: clamp(56px, 16vw, 88px);
+}
+
+.heading {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 800;
+  color: var(--color-secondary);
+}
+
+.description {
+  font-size: clamp(1rem, 3vw, 1.15rem);
+  color: var(--color-text-light);
+}
+
+.startBtn {
+  margin-top: 8px;
+  padding: 16px 48px;
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  font-weight: 800;
+  color: #fff;
+  background: var(--color-secondary);
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(78, 205, 196, 0.4);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.startBtn:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(78, 205, 196, 0.3);
+}
+
+/* ---- Count selector ---- */
+
+.countSelector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.countLabel {
+  font-size: clamp(0.9rem, 2.8vw, 1rem);
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+.countButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.countBtn {
+  width: 60px;
+  height: 60px;
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  font-weight: 800;
+  border: 3px solid #ddd;
+  border-radius: 16px;
+  background: #fff;
+  color: var(--color-text-light);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.12s, background 0.12s, color 0.12s, transform 0.1s;
+  font-family: inherit;
+}
+
+.countBtn:active {
+  transform: scale(0.93);
+}
+
+.countBtnActive {
+  border-color: var(--color-secondary);
+  background: var(--color-secondary);
+  color: #fff;
+}

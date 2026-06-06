@@ -1,0 +1,51 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg: #fff9f0;
+  --color-primary: #ff6b6b;
+  --color-secondary: #4ecdc4;
+  --color-accent: #ffe66d;
+  --color-purple: #a855f7;
+  --color-orange: #ff9f43;
+  --color-text: #2d2d2d;
+  --color-text-light: #666;
+  --radius-card: 24px;
+  --radius-btn: 16px;
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-card-hover: 0 16px 40px rgba(0, 0, 0, 0.18);
+  --font-main: 'Segoe UI', 'Arial Rounded MT Bold', Arial, sans-serif;
+}
+
+html {
+  /* Prevent iOS font size inflation when rotating */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  /* Prevent rubber-band overscroll revealing bare background */
+  overscroll-behavior-y: contain;
+  /* Prevent horizontal scroll bleed */
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* Remove tap highlight on Android/iOS for interactive elements */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  /* Prevent double-tap zoom on buttons */
+  touch-action: manipulation;
+}

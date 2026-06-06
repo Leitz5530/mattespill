@@ -1,0 +1,446 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(10px, 2vw, 16px);
+  width: 100%;
+  max-width: 520px;
+  padding-bottom: 16px;
+}
+
+/* ---- Round progress ---- */
+
+.roundProgress {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.progressDots {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dot {
+  display: inline-block;
+  border-radius: 50%;
+  transition: background 0.15s, width 0.15s, height 0.15s, box-shadow 0.15s;
+}
+
+.dotFuture {
+  width: 9px;
+  height: 9px;
+  background: #ddd;
+}
+
+.dotCurrent {
+  width: 13px;
+  height: 13px;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.25);
+}
+
+.dotCurrentMistake {
+  width: 13px;
+  height: 13px;
+  background: var(--color-orange);
+  box-shadow: 0 0 0 3px rgba(255, 159, 67, 0.25);
+}
+
+.dotDone {
+  width: 9px;
+  height: 9px;
+  background: #5cb85c;
+}
+
+.progressCounts {
+  display: flex;
+  gap: 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-height: 1em;
+}
+
+.correctCount {
+  color: #5cb85c;
+}
+
+.mistakeCount {
+  color: var(--color-orange);
+}
+
+/* ---- Task ---- */
+
+.taskText {
+  font-size: clamp(1.05rem, 4vw, 1.3rem);
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: center;
+  line-height: 1.4;
+  background: var(--color-accent);
+  padding: 10px 16px;
+  border-radius: 14px;
+  width: 100%;
+}
+
+.hint {
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  color: var(--color-text-light);
+  text-align: center;
+  min-height: 1.3em;
+}
+
+/* ---- Baskets ---- */
+
+.baskets {
+  display: flex;
+  gap: clamp(6px, 2vw, 12px);
+  width: 100%;
+  align-items: stretch;
+}
+
+.basket {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 6px 10px;
+  background: #e8fffe;
+  border: 3px solid var(--color-secondary);
+  border-radius: 20px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.12s, border-color 0.12s, box-shadow 0.12s;
+  min-height: 130px;
+  text-align: center;
+  font-family: inherit;
+  user-select: none;
+}
+
+.basketDropTarget {
+  background: #c6f7f4;
+  border-color: #2bb5ab;
+  border-style: dashed;
+  box-shadow: 0 0 0 2px rgba(43, 181, 171, 0.3);
+}
+
+.personName {
+  font-size: clamp(0.9rem, 3vw, 1.05rem);
+  font-weight: 800;
+  color: var(--color-secondary);
+}
+
+.basketItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3px;
+  flex: 1;
+  min-height: 40px;
+  width: 100%;
+}
+
+.emptyBasket {
+  font-size: 0.75rem;
+  color: #bbb;
+  align-self: center;
+  font-style: italic;
+}
+
+.basketCount {
+  font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+  color: var(--color-text-light);
+  font-weight: 700;
+}
+
+/* ---- Hurtigflytt toggle + panel ---- */
+
+.quickToggle {
+  background: none;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #888;
+  cursor: pointer;
+  padding: 5px 14px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+  transition: background 0.1s, color 0.1s;
+}
+
+.quickToggle:active {
+  background: #f0f0f0;
+}
+
+.quickPanel {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #f9f9f9;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.quickPerson {
+  flex: 1;
+  min-width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.quickPersonName {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  text-align: center;
+}
+
+.quickButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  width: 100%;
+}
+
+/* ---- Quick-move buttons (+1 / -1) ---- */
+
+.giveBtn,
+.returnBtn {
+  height: 36px;
+  font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+  font-weight: 800;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s, opacity 0.15s;
+  font-family: inherit;
+}
+
+.giveBtn {
+  color: #fff;
+  background: var(--color-secondary);
+}
+
+.returnBtn {
+  color: #fff;
+  background: var(--color-primary);
+}
+
+.giveBtn:active:not(:disabled),
+.returnBtn:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+.giveBtn:disabled,
+.returnBtn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+/* ---- Pile ---- */
+
+.pileArea {
+  width: 100%;
+  background: #fff8e6;
+  border: 3px solid var(--color-accent);
+  border-radius: 20px;
+  padding: 10px 12px 12px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.12s, border-color 0.12s, box-shadow 0.12s;
+  text-align: center;
+  user-select: none;
+}
+
+.pileDropTarget {
+  background: #fff0b3;
+  border-color: #e6c400;
+  border-style: dashed;
+  box-shadow: 0 0 0 2px rgba(230, 196, 0, 0.3);
+}
+
+.pileLabel {
+  display: block;
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+  font-weight: 700;
+  color: var(--color-text-light);
+  margin-bottom: 8px;
+}
+
+.pile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3px;
+  min-height: 40px;
+}
+
+.emptyPile {
+  font-size: 0.85rem;
+  color: #bbb;
+  font-style: italic;
+  align-self: center;
+}
+
+/* ---- Fruit items ---- */
+
+.item {
+  width: clamp(36px, 9vw, 44px);
+  height: clamp(36px, 9vw, 44px);
+  font-size: clamp(20px, 5.5vw, 26px);
+  background: none;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* touch-action: none allows pointer events to fire without triggering scroll */
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s, border-color 0.1s, background 0.1s, opacity 0.1s;
+  line-height: 1;
+  user-select: none;
+}
+
+.item:active {
+  transform: scale(0.88);
+}
+
+.itemSelected {
+  background: #fff;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.35);
+  transform: scale(1.12);
+}
+
+/* Source item while dragging: dimmed so user sees the ghost instead */
+.itemDragging {
+  opacity: 0.2;
+  pointer-events: none;
+  transform: scale(1) !important;
+  cursor: default;
+}
+
+/* ---- Drag ghost ---- */
+
+.dragGhost {
+  position: fixed;
+  /* Centered on pointer with a slight upward offset for finger visibility */
+  transform: translate(-50%, -60%) scale(1.35);
+  font-size: clamp(28px, 8vw, 36px);
+  pointer-events: none;
+  z-index: 9999;
+  user-select: none;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
+  /* No transition — ghost must follow pointer without lag */
+  transition: none;
+}
+
+/* ---- Action area ---- */
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.checkBtn {
+  padding: 14px 40px;
+  font-size: clamp(1rem, 3.5vw, 1.15rem);
+  font-weight: 800;
+  color: #fff;
+  background: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.35);
+  transition: transform 0.1s;
+  touch-action: manipulation;
+}
+
+.checkBtn:active {
+  transform: scale(0.96);
+}
+
+/* ---- Feedback ---- */
+
+.feedbackCorrect,
+.feedbackWrong {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 18px;
+  width: 100%;
+  text-align: center;
+}
+
+.feedbackCorrect {
+  background: #d4f8d4;
+  border: 2px solid #5cb85c;
+}
+
+.feedbackWrong {
+  background: #fff0cc;
+  border: 2px solid var(--color-orange);
+}
+
+.feedbackText {
+  font-size: clamp(1rem, 3.5vw, 1.1rem);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.newTaskBtn {
+  padding: 12px 32px;
+  font-size: clamp(0.95rem, 3vw, 1.05rem);
+  font-weight: 800;
+  color: #fff;
+  background: var(--color-secondary);
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(78, 205, 196, 0.35);
+  transition: transform 0.1s;
+  touch-action: manipulation;
+}
+
+.newTaskBtn:active {
+  transform: scale(0.96);
+}
+
+.retryBtn {
+  padding: 12px 32px;
+  font-size: clamp(0.95rem, 3vw, 1.05rem);
+  font-weight: 800;
+  color: var(--color-text);
+  background: var(--color-accent);
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 230, 109, 0.4);
+  transition: transform 0.1s;
+  touch-action: manipulation;
+}
+
+.retryBtn:active {
+  transform: scale(0.96);
+}

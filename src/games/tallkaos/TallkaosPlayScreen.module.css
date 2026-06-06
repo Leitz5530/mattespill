@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  /* Fill the full height given by GameScreen's .content */
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: 560px;
+  gap: clamp(8px, 2dvh, 16px);
+}
+
+/* ── Top bar ─────────────────────────────────────────────────────────────── */
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  flex-shrink: 0;
+}
+
+.progress {
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+.timer {
+  flex: 1;
+  text-align: center;
+  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  font-weight: 800;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.score {
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* ── Prompt ──────────────────────────────────────────────────────────────── */
+
+.prompt {
+  font-size: clamp(2rem, 10vw, 3.5rem);
+  font-weight: 900;
+  color: var(--color-text);
+  text-align: center;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  flex-shrink: 0;
+}
+
+/* ── Feedback ────────────────────────────────────────────────────────────── */
+
+.feedback {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  font-weight: 800;
+  text-align: center;
+  min-height: 1.6em;
+  flex-shrink: 0;
+}
+
+.correct { color: #16a34a; }
+.wrong   { color: var(--color-primary); }

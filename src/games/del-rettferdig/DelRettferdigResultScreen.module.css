@@ -1,0 +1,125 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px, 3vw, 22px);
+  padding: clamp(28px, 7dvh, 56px) clamp(20px, 5vw, 40px);
+  border-radius: var(--radius-card);
+  background: #f0fffe;
+  border: 3px solid var(--color-secondary);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.emoji {
+  font-size: clamp(52px, 15vw, 80px);
+}
+
+.heading {
+  font-size: clamp(1.4rem, 5vw, 1.9rem);
+  font-weight: 800;
+  color: var(--color-secondary);
+}
+
+.subtext {
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+  color: var(--color-text-light);
+}
+
+/* ---- Stats ---- */
+
+.stats {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 18px;
+  border: 2px solid #e8fffe;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(0.9rem, 2.8vw, 1rem);
+}
+
+.statRowTotal {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1.5px solid #eee;
+  font-weight: 700;
+}
+
+.statLabel {
+  color: var(--color-text-light);
+}
+
+.statValue {
+  font-weight: 800;
+  font-size: clamp(1rem, 3vw, 1.1rem);
+}
+
+.valueCorrect {
+  color: #5cb85c;
+}
+
+.valueMistake {
+  color: var(--color-orange);
+}
+
+.valuePercent {
+  color: var(--color-secondary);
+}
+
+/* ---- Buttons ---- */
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.playAgainBtn {
+  padding: 14px;
+  font-size: clamp(1rem, 3.5vw, 1.15rem);
+  font-weight: 800;
+  color: #fff;
+  background: var(--color-secondary);
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(78, 205, 196, 0.35);
+  transition: transform 0.1s;
+  touch-action: manipulation;
+  width: 100%;
+  font-family: inherit;
+}
+
+.playAgainBtn:active {
+  transform: scale(0.96);
+}
+
+.homeBtn {
+  padding: 12px;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-weight: 700;
+  color: var(--color-text-light);
+  background: #f0f0f0;
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: transform 0.1s, background 0.1s;
+  touch-action: manipulation;
+  width: 100%;
+  font-family: inherit;
+}
+
+.homeBtn:active {
+  transform: scale(0.96);
+  background: #e0e0e0;
+}

@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding: clamp(16px, 4dvh, 32px) clamp(16px, 5vw, 28px) clamp(32px, 6dvh, 64px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: clamp(24px, 5dvh, 48px);
+}
+
+.backBtn {
+  background: #fff;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  /* Minimum 44px touch target height */
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Keep hover as progressive enhancement — not required for interaction */
+@media (hover: hover) {
+  .backBtn:hover {
+    background: var(--color-primary);
+    color: #fff;
+  }
+}
+
+.backBtn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.backBtn:active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.title {
+  font-size: clamp(1.25rem, 5vw, 2rem);
+  font-weight: 900;
+  color: var(--color-text);
+  /* Prevent title from pushing button off-screen on very narrow phones */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  /* Required so flex children with flex: 1 can fill height without overflow */
+  min-height: 0;
+}

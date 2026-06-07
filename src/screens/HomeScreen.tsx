@@ -31,6 +31,13 @@ const GAMES: Game[] = [
     description: 'Gjør begge sider like.',
     color: '#6c5ce7',
   },
+  {
+    id: 'butikk',
+    title: 'Butikk',
+    emoji: '🛒',
+    description: 'Betal riktig beløp.',
+    color: '#27ae60',
+  },
 ];
 
 interface Props {

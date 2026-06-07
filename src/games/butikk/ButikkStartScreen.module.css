@@ -1,0 +1,152 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 3vw, 18px);
+  padding: clamp(24px, 6dvh, 48px) clamp(20px, 5vw, 40px);
+  border-radius: var(--radius-card);
+  background: #f0fff4;
+  border: 3px dashed #27ae60;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.emoji {
+  font-size: clamp(48px, 14vw, 72px);
+}
+
+.heading {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 800;
+  color: #27ae60;
+}
+
+.description {
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+  color: var(--color-text-light);
+}
+
+.startBtn {
+  margin-top: 4px;
+  padding: 16px 48px;
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  font-weight: 800;
+  color: #fff;
+  background: #27ae60;
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
+  transition: transform 0.1s, box-shadow 0.1s;
+  font-family: inherit;
+}
+
+.startBtn:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(39, 174, 96, 0.3);
+}
+
+/* ---- Count selector ---- */
+
+.countSelector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.countLabel {
+  font-size: clamp(0.9rem, 2.8vw, 1rem);
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+.countButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.countBtn {
+  width: 60px;
+  height: 60px;
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  font-weight: 800;
+  border: 3px solid #ddd;
+  border-radius: 16px;
+  background: #fff;
+  color: var(--color-text-light);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.12s, background 0.12s, color 0.12s, transform 0.1s;
+  font-family: inherit;
+}
+
+.countBtn:active {
+  transform: scale(0.93);
+}
+
+.countBtnActive {
+  border-color: #27ae60;
+  background: #27ae60;
+  color: #fff;
+}
+
+/* ---- Level selector ---- */
+
+.levelSelector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.levelLabel {
+  font-size: clamp(0.9rem, 2.8vw, 1rem);
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+.levelButtons {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.levelBtn {
+  flex: 1;
+  height: 52px;
+  font-size: clamp(0.85rem, 2.8vw, 1rem);
+  font-weight: 800;
+  border: 3px solid #ddd;
+  border-radius: 16px;
+  background: #fff;
+  color: var(--color-text-light);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.12s, background 0.12s, color 0.12s, transform 0.1s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.levelBtn:active {
+  transform: scale(0.93);
+}
+
+.levelBtnActive {
+  border-color: #27ae60;
+  background: #27ae60;
+  color: #fff;
+}
+
+.levelDescription {
+  font-size: clamp(0.8rem, 2.5vw, 0.88rem);
+  color: var(--color-text-light);
+  font-style: italic;
+  min-height: 1.3em;
+  text-align: center;
+}

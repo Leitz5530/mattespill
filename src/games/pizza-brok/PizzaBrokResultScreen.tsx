@@ -1,13 +1,13 @@
-import type { RoundResult } from './fairShareTypes';
-import styles from './DelRettferdigResultScreen.module.css';
+import type { PizzaBrokRoundResult } from './pizzaBrokTypes';
+import styles from './PizzaBrokResultScreen.module.css';
 
 interface Props {
-  result: RoundResult;
+  result: PizzaBrokRoundResult;
   onPlayAgain: (count: number) => void;
   onGoHome: () => void;
 }
 
-export default function DelRettferdigResultScreen({ result, onPlayAgain, onGoHome }: Props) {
+export default function PizzaBrokResultScreen({ result, onPlayAgain, onGoHome }: Props) {
   const { totalQuestions, firstTryCorrect, hadMistakes } = result;
   const perfectRound = hadMistakes === 0;
   const percent = Math.round((firstTryCorrect / totalQuestions) * 100);

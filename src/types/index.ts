@@ -1,4 +1,4 @@
-export type GameId = 'tallkaos' | 'del-rettferdig';
+export type GameId = 'tallkaos' | 'del-rettferdig' | 'pizza-brok' | 'vektskala';
 
 export interface Game {
   id: GameId;
@@ -9,7 +9,6 @@ export interface Game {
 }
 
 export type MathOperator = 'add' | 'subtract' | 'multiply' | 'divide';
-export type AnswerInputType = 'tapChoice' | 'dragDrop' | 'textInput';
 export type PlayMode = 'fixedQuestions' | 'fixedTime' | 'challenge' | 'practice';
 export type Difficulty = 'easy' | 'normal' | 'hard';
 

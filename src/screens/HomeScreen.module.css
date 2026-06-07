@@ -40,4 +40,11 @@
   .games {
     grid-template-columns: 1fr 1fr;
   }
+  /* Last card spans full row when total is odd */
+  .games > *:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 360px;
+    justify-self: center;
+    width: 100%;
+  }
 }

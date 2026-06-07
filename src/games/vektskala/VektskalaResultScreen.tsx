@@ -1,13 +1,13 @@
-import type { RoundResult } from './fairShareTypes';
-import styles from './DelRettferdigResultScreen.module.css';
+import type { VektskalaRoundResult } from './vektskalaTypes';
+import styles from './VektskalaResultScreen.module.css';
 
 interface Props {
-  result: RoundResult;
+  result: VektskalaRoundResult;
   onPlayAgain: (count: number) => void;
   onGoHome: () => void;
 }
 
-export default function DelRettferdigResultScreen({ result, onPlayAgain, onGoHome }: Props) {
+export default function VektskalaResultScreen({ result, onPlayAgain, onGoHome }: Props) {
   const { totalQuestions, firstTryCorrect, hadMistakes } = result;
   const perfectRound = hadMistakes === 0;
   const percent = Math.round((firstTryCorrect / totalQuestions) * 100);
@@ -23,7 +23,7 @@ export default function DelRettferdigResultScreen({ result, onPlayAgain, onGoHom
       <p className={styles.subtext}>
         {perfectRound
           ? 'Alle riktige på første forsøk!'
-          : 'Du løste alle oppgavene til slutt.'}
+          : 'Du fikk vektskåla i balanse til slutt.'}
       </p>
 
       <div className={styles.stats}>

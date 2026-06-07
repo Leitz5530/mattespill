@@ -1,0 +1,144 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 3vw, 18px);
+  padding: clamp(28px, 7dvh, 56px) clamp(20px, 5vw, 40px);
+  border-radius: var(--radius-card);
+  background: #f3f0ff;
+  border: 3px dashed #6c5ce7;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.emoji {
+  font-size: clamp(52px, 14vw, 80px);
+}
+
+.heading {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 800;
+  color: #6c5ce7;
+}
+
+/* ---- Shared selector label ---- */
+
+.selectorLabel {
+  font-size: clamp(0.85rem, 2.8vw, 0.95rem);
+  font-weight: 700;
+  color: var(--color-text-light);
+  margin-bottom: 2px;
+}
+
+/* ---- Level selector ---- */
+
+.levelSelector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.levelButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.levelBtn {
+  padding: 10px 16px;
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-weight: 700;
+  border: 3px solid #ddd;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--color-text-light);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.12s, background 0.12s, color 0.12s, transform 0.1s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.levelBtn:active {
+  transform: scale(0.93);
+}
+
+.levelBtnActive {
+  border-color: #6c5ce7;
+  background: #6c5ce7;
+  color: #fff;
+}
+
+.levelDesc {
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  color: #6c5ce7;
+  font-weight: 600;
+  min-height: 1.4em;
+}
+
+/* ---- Count selector ---- */
+
+.countSelector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.countButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.countBtn {
+  width: 58px;
+  height: 58px;
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  font-weight: 800;
+  border: 3px solid #ddd;
+  border-radius: 16px;
+  background: #fff;
+  color: var(--color-text-light);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.12s, background 0.12s, color 0.12s, transform 0.1s;
+  font-family: inherit;
+}
+
+.countBtn:active {
+  transform: scale(0.93);
+}
+
+.countBtnActive {
+  border-color: #6c5ce7;
+  background: #6c5ce7;
+  color: #fff;
+}
+
+/* ---- Start button ---- */
+
+.startBtn {
+  margin-top: 4px;
+  padding: 16px 48px;
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  font-weight: 800;
+  color: #fff;
+  background: #6c5ce7;
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
+  transition: transform 0.1s, box-shadow 0.1s;
+  touch-action: manipulation;
+  font-family: inherit;
+}
+
+.startBtn:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(108, 92, 231, 0.3);
+}

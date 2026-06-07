@@ -1,6 +1,8 @@
 import type { GameId } from '../types';
 import TallkaosGame from '../games/tallkaos/TallkaosGame';
 import DelRettferdigGame from '../games/del-rettferdig/DelRettferdigGame';
+import PizzaBrokGame from '../games/pizza-brok/PizzaBrokGame';
+import VektskalaGame from '../games/vektskala/VektskalaGame';
 import styles from './GameScreen.module.css';
 
 interface Props {
@@ -11,11 +13,15 @@ interface Props {
 const GAME_TITLES: Record<GameId, string> = {
   tallkaos: 'Tallkaos',
   'del-rettferdig': 'Del rettferdig',
+  'pizza-brok': 'Pizza-brøk',
+  vektskala: 'Vektskåla',
 };
 
 function GameContent({ gameId, onGoHome }: { gameId: GameId; onGoHome: () => void }) {
   if (gameId === 'tallkaos') return <TallkaosGame onGoHome={onGoHome} />;
   if (gameId === 'del-rettferdig') return <DelRettferdigGame onGoHome={onGoHome} />;
+  if (gameId === 'pizza-brok') return <PizzaBrokGame onGoHome={onGoHome} />;
+  if (gameId === 'vektskala') return <VektskalaGame onGoHome={onGoHome} />;
   return null;
 }
 

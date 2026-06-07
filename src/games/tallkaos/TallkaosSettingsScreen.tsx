@@ -61,6 +61,7 @@ export default function TallkaosSettingsScreen({ initialSettings, onStart }: Pro
               key={value}
               className={`${styles.operatorBtn} ${operator === value ? styles.selected : ''}`}
               onClick={() => setOperator(value)}
+              aria-pressed={operator === value}
             >
               <span className={styles.symbol}>{symbol}</span>
               <span className={styles.opLabel}>{label}</span>
@@ -77,6 +78,7 @@ export default function TallkaosSettingsScreen({ initialSettings, onStart }: Pro
               key={n}
               className={`${styles.chipBtn} ${questionCount === n ? styles.selected : ''}`}
               onClick={() => setQuestionCount(n)}
+              aria-pressed={questionCount === n}
             >
               {n}
             </button>
@@ -92,6 +94,7 @@ export default function TallkaosSettingsScreen({ initialSettings, onStart }: Pro
               key={value}
               className={`${styles.chipBtn} ${difficulty === value ? styles.selected : ''}`}
               onClick={() => setDifficulty(value)}
+              aria-pressed={difficulty === value}
             >
               {label}
             </button>
@@ -105,12 +108,14 @@ export default function TallkaosSettingsScreen({ initialSettings, onStart }: Pro
           <button
             className={`${styles.chipBtn} ${soundEnabled ? styles.selected : ''}`}
             onClick={() => setSoundEnabled(true)}
+            aria-pressed={soundEnabled}
           >
             🔊 På
           </button>
           <button
             className={`${styles.chipBtn} ${!soundEnabled ? styles.selected : ''}`}
             onClick={() => setSoundEnabled(false)}
+            aria-pressed={!soundEnabled}
           >
             🔇 Av
           </button>

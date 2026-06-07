@@ -86,7 +86,10 @@ export default function TallkaosPlayScreen({ settings, onFinish }: Props) {
           Oppgave {currentIndex + 1} av {questions.length}
         </span>
         <span className={styles.timer}>{formatDuration(displayMs)}</span>
-        <span className={styles.score}>
+        <span
+          className={styles.score}
+          aria-label={`Riktig: ${correctFirstTry}, med feil: ${withMistakes}`}
+        >
           ✅ {correctFirstTry}&nbsp;&nbsp;❌ {withMistakes}
         </span>
       </div>

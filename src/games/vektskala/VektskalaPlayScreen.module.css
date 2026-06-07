@@ -1,0 +1,302 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(10px, 2.5dvh, 18px);
+  width: 100%;
+  max-width: 520px;
+}
+
+/* ---- Progress ---- */
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.progressDots {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.dotDone           { background: #6c5ce7; }
+.dotCurrent        { background: #6c5ce7; outline: 3px solid #b3aaff; outline-offset: 2px; }
+.dotCurrentMistake { background: var(--color-primary); outline: 3px solid #ffaaaa; outline-offset: 2px; }
+.dotFuture         { background: #ddd; }
+
+.progressMeta {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.progressLabel {
+  font-size: 0.9rem;
+  color: var(--color-text-light);
+  font-weight: 600;
+}
+
+.correctCount {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #4caf50;
+}
+
+.mistakeCount {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ---- Prompt ---- */
+
+.prompt {
+  font-size: clamp(1rem, 3.5vw, 1.1rem);
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+/* ---- Equation ---- */
+
+.equation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 2.5vw, 14px);
+  flex-wrap: wrap;
+  background: #fff;
+  border-radius: 20px;
+  padding: clamp(12px, 3vw, 20px) clamp(16px, 4vw, 28px);
+  border: 3px solid #e0d9ff;
+  width: 100%;
+}
+
+.equNum {
+  font-size: clamp(1.8rem, 8vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.equOp {
+  font-size: clamp(1.8rem, 8vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-text-light);
+}
+
+.equEquals {
+  font-size: clamp(1.8rem, 8vw, 2.8rem);
+  font-weight: 900;
+  color: #6c5ce7;
+}
+
+/* Filled slot — shows selected number */
+.slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: clamp(48px, 13vw, 68px);
+  height: clamp(48px, 13vw, 68px);
+  background: #6c5ce7;
+  color: #fff;
+  border-radius: 12px;
+  font-size: clamp(1.8rem, 8vw, 2.8rem);
+  font-weight: 900;
+  padding: 0 8px;
+  transition: transform 0.12s;
+}
+
+/* Empty slot — shows ? */
+.slotEmpty {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: clamp(48px, 13vw, 68px);
+  height: clamp(48px, 13vw, 68px);
+  background: #f3f0ff;
+  color: #6c5ce7;
+  border-radius: 12px;
+  font-size: clamp(1.8rem, 8vw, 2.8rem);
+  font-weight: 900;
+  border: 3px dashed #6c5ce7;
+  padding: 0 8px;
+}
+
+/* Green glow on equation card when correct (Normal / Vanskelig) */
+.equationCorrect {
+  border-color: #4caf50;
+  animation: equationGlow 1.8s ease-in-out infinite;
+}
+
+@keyframes equationGlow {
+  0%,  100% { box-shadow: 0 0 6px rgba(76, 175, 80, 0.3); }
+  50%        { box-shadow: 0 0 22px rgba(76, 175, 80, 0.75); }
+}
+
+/* ---- Balance Scale SVG ---- */
+
+.scaleSvg {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  transition: filter 0.4s;
+}
+
+.scaleSvgBalanced {
+  animation: balancePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes balancePulse {
+  0%,  100% { filter: drop-shadow(0 0 6px rgba(76, 175, 80, 0.4)); }
+  50%        { filter: drop-shadow(0 0 18px rgba(76, 175, 80, 0.8)); }
+}
+
+.beam {
+  transition: transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/* ---- Number choices ---- */
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+}
+
+.choiceBtn {
+  width: clamp(52px, 14vw, 70px);
+  height: clamp(52px, 14vw, 70px);
+  font-size: clamp(1.2rem, 5vw, 1.6rem);
+  font-weight: 800;
+  border: 3px solid #d0c8ff;
+  border-radius: 16px;
+  background: #fff;
+  color: #6c5ce7;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s, background 0.12s, border-color 0.12s, color 0.12s;
+  font-family: inherit;
+}
+
+.choiceBtn:active {
+  transform: scale(0.9);
+}
+
+.choiceBtnSelected {
+  background: #6c5ce7;
+  border-color: #6c5ce7;
+  color: #fff;
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.35);
+}
+
+.choiceBtnSelected:active {
+  transform: scale(0.97);
+}
+
+.choiceBtnDisabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ---- Actions ---- */
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.hintNeutral {
+  font-size: clamp(0.9rem, 3vw, 1rem);
+  color: var(--color-text-light);
+  font-style: italic;
+}
+
+.hintWrong {
+  font-size: clamp(0.95rem, 3vw, 1.05rem);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: center;
+  background: #fff0f0;
+  border-radius: 10px;
+  padding: 8px 14px;
+  width: 100%;
+}
+
+.checkBtn {
+  padding: 14px 40px;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  font-weight: 800;
+  color: #fff;
+  background: #6c5ce7;
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
+  transition: transform 0.1s, box-shadow 0.1s;
+  touch-action: manipulation;
+  width: 100%;
+  font-family: inherit;
+}
+
+.checkBtn:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(108, 92, 231, 0.3);
+}
+
+.correctArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.correctMsg {
+  font-size: clamp(1rem, 3.5vw, 1.15rem);
+  font-weight: 700;
+  color: #2e7d32;
+  text-align: center;
+  background: #e8f5e9;
+  border-radius: 12px;
+  padding: 10px 16px;
+  width: 100%;
+}
+
+.nextBtn {
+  padding: 14px 40px;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  font-weight: 800;
+  color: #fff;
+  background: #4caf50;
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+  transition: transform 0.1s;
+  touch-action: manipulation;
+  width: 100%;
+  font-family: inherit;
+}
+
+.nextBtn:active {
+  transform: scale(0.96);
+}

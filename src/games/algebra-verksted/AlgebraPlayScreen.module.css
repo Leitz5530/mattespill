@@ -1,0 +1,434 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 4vw, 28px);
+  padding: clamp(20px, 5dvh, 40px) clamp(16px, 4vw, 28px);
+  border-radius: var(--radius-card);
+  background: #eff6ff;
+  border: 3px solid #93c5fd;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ── Progress ── */
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.progressDots {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.dotDone           { background: #22c55e; }
+.dotCurrent        { background: #2563eb; box-shadow: 0 0 6px rgba(37,99,235,.5); }
+.dotCurrentMistake { background: #f59e0b; }
+.dotFuture         { background: #cbd5e1; }
+
+.progressCounts {
+  display: flex;
+  gap: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.correctCount { color: #22c55e; }
+.mistakeCount { color: #f59e0b; }
+
+.progressText {
+  font-size: clamp(0.85rem, 2.8vw, 0.95rem);
+  color: var(--color-text-light);
+  font-weight: 600;
+}
+
+/* ── Equation layout ── */
+
+.equationArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.equationRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 3vw, 18px);
+  font-size: clamp(2.2rem, 9vw, 3.5rem);
+  font-weight: 800;
+  padding: clamp(16px, 4vw, 28px) clamp(12px, 3vw, 20px);
+  width: 100%;
+}
+
+.equationRowSm {
+  font-size: clamp(1.5rem, 5.5vw, 2.4rem);
+  gap: clamp(6px, 2vw, 12px);
+  padding: clamp(12px, 3vw, 20px) clamp(8px, 2vw, 16px);
+}
+
+.eqLeft {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1.5vw, 8px);
+}
+
+.eqRight {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1.5vw, 8px);
+  border-radius: 12px;
+  transition: outline 0.12s, background 0.12s;
+}
+
+.xTerm {
+  color: #1d4ed8;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.equalsSign {
+  color: #64748b;
+  font-weight: 700;
+  font-size: 0.85em;
+  /* Needs a ref in idle mode — keep it as a plain span */
+}
+
+/* ── Constant tile ─────────────────────────────────────────────────────────── */
+
+.constTile {
+  background: #dbeafe;
+  border: 2.5px solid #2563eb;
+  border-radius: 10px;
+  color: #1d4ed8;
+  font-size: inherit;
+  font-weight: 800;
+  font-family: inherit;
+  padding: 2px 10px;
+  /* grab cursor hints the tile is draggable */
+  cursor: grab;
+  /* none disables scrolling on this element so drag is clean */
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 3px 10px rgba(37,99,235,.3);
+  line-height: 1.2;
+  user-select: none;
+  transition: background 0.12s, box-shadow 0.12s, opacity 0.12s;
+  animation: tileAppear 0.2s ease-out;
+}
+
+@keyframes tileAppear {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* While being dragged: fade the original tile (ghost replaces it visually) */
+.constTileDragging {
+  opacity: 0.15;
+  cursor: grabbing;
+  box-shadow: none;
+}
+
+/* ── Drop zone highlight (right side when ghost crosses "=") ── */
+
+.eqRightActive {
+  outline: 3px dashed #f59e0b;
+  background: rgba(254,243,199,.55);
+  border-radius: 14px;
+  padding: 6px 12px;
+}
+
+/* ── Ghost tile (fixed-position clone that follows the pointer) ── */
+
+.ghostTile {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  background: #dbeafe;
+  border: 2.5px solid #2563eb;
+  border-radius: 10px;
+  color: #1d4ed8;
+  font-size: clamp(2.2rem, 9vw, 3.5rem);
+  font-weight: 800;
+  font-family: var(--font-main);
+  padding: 2px 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+  user-select: none;
+  box-shadow: 0 10px 30px rgba(37,99,235,.4);
+  transform: scale(1.08) rotate(-2deg);
+  /* Smooth sign-label and color transition when crossing "=" */
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+/* Ghost after crossing "=" — shows the new sign in amber */
+.ghostCrossed {
+  background: #fef9c3;
+  border-color: #ca8a04;
+  color: #713f12;
+}
+
+/* ── Term states in intermediate steps ── */
+
+/* Phase 1: gray text, no strikethrough yet */
+.termGray {
+  color: #94a3b8;
+}
+
+/* Phase 2: gray + red strikethrough */
+.termStrike {
+  color: #94a3b8;
+  text-decoration: line-through;
+  text-decoration-color: #ef4444;
+  text-decoration-thickness: 2.5px;
+}
+
+/* Operation shown on right side (the value we're applying) */
+.opNum {
+  color: #2563eb;
+  font-weight: 800;
+}
+
+.rightNum {
+  color: var(--color-text);
+}
+
+/* ── Fraction display (divide_mid) ── */
+
+.fraction {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.fracTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 2px 8px;
+  min-width: 1.5em;
+}
+
+.fracLine {
+  align-self: stretch;
+  height: 2.5px;
+  background: currentColor;
+  border-radius: 1px;
+  min-width: 1.8em;
+}
+
+.fracBot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  min-width: 1.5em;
+}
+
+/* The "x" that remains after the coefficient is cancelled */
+.xOnly {
+  color: #1d4ed8;
+  font-weight: 900;
+}
+
+/* ── Solved equation ── */
+
+.solvedRow {
+  background: #f0fdf4;
+  border: 3px solid #22c55e;
+  border-radius: 20px;
+  box-shadow: 0 0 24px rgba(34,197,94,.25);
+}
+
+.solutionNum {
+  color: #15803d;
+}
+
+/* ── Intermediate step block ── */
+
+.midBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: #fff;
+  border-radius: 18px;
+  border: 2px solid #bfdbfe;
+  padding: 14px 10px;
+}
+
+.midDesc {
+  font-size: clamp(0.9rem, 3vw, 1.05rem);
+  color: #1d4ed8;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ── Actions area ── */
+
+.actionsArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.tapHint {
+  font-size: clamp(0.85rem, 2.8vw, 0.95rem);
+  color: var(--color-text-light);
+  text-align: center;
+  font-style: italic;
+}
+
+/* "Del begge sider" button */
+.divideBtn {
+  padding: 14px 24px;
+  font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+  font-weight: 800;
+  color: #7c3aed;
+  background: #f3e8ff;
+  border: 2.5px solid #7c3aed;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+  transition: background 0.12s, transform 0.1s;
+  width: 100%;
+}
+
+.divideBtn:active {
+  background: #e9d5ff;
+  transform: scale(0.96);
+}
+
+/* ── Divisor choice ── */
+
+.divisorSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.divisorPrompt {
+  font-size: clamp(0.95rem, 3.2vw, 1.1rem);
+  font-weight: 700;
+  color: #7c3aed;
+  text-align: center;
+}
+
+.divisorGrid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.divisorBtn {
+  width: clamp(60px, 18vw, 80px);
+  height: clamp(60px, 18vw, 80px);
+  font-size: clamp(1.2rem, 5vw, 1.7rem);
+  font-weight: 800;
+  color: #7c3aed;
+  background: #f3e8ff;
+  border: 2.5px solid #7c3aed;
+  border-radius: 16px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+  transition: background 0.12s, transform 0.1s;
+}
+
+.divisorBtn:active {
+  background: #e9d5ff;
+  transform: scale(0.93);
+}
+
+.cancelBtn {
+  background: none;
+  border: none;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+  padding: 4px 8px;
+  text-decoration: underline;
+}
+
+/* ── Hint box ── */
+
+.hintBox {
+  background: #fef3c7;
+  border: 2px solid #f59e0b;
+  border-radius: 14px;
+  padding: 10px 16px;
+  width: 100%;
+}
+
+.hintText {
+  font-size: clamp(0.85rem, 2.8vw, 0.95rem);
+  color: #92400e;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ── Solved feedback ── */
+
+.solvedFeedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.solvedMsg {
+  font-size: clamp(1.1rem, 4vw, 1.35rem);
+  font-weight: 800;
+  color: #15803d;
+  text-align: center;
+}
+
+.nextBtn {
+  padding: 14px;
+  font-size: clamp(1rem, 3.5vw, 1.15rem);
+  font-weight: 800;
+  color: #fff;
+  background: #22c55e;
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  touch-action: manipulation;
+  font-family: inherit;
+  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: 0 4px 12px rgba(34,197,94,.35);
+  width: 100%;
+}
+
+.nextBtn:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(34,197,94,.25);
+}

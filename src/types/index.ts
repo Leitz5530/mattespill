@@ -1,4 +1,4 @@
-export type GameId = 'tallkaos' | 'del-rettferdig' | 'pizza-brok' | 'vektskala' | 'butikk';
+export type GameId = 'tallkaos' | 'del-rettferdig' | 'pizza-brok' | 'vektskala' | 'butikk' | 'algebra-verksted';
 
 export interface Game {
   id: GameId;

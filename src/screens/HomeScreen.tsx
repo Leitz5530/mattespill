@@ -38,6 +38,13 @@ const GAMES: Game[] = [
     description: 'Betal riktig beløp.',
     color: '#27ae60',
   },
+  {
+    id: 'algebra-verksted',
+    title: 'Algebra-verksted',
+    emoji: '🧮',
+    description: 'Få x alene.',
+    color: '#2563eb',
+  },
 ];
 
 interface Props {

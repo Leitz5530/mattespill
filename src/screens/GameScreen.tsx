@@ -4,6 +4,7 @@ import DelRettferdigGame from '../games/del-rettferdig/DelRettferdigGame';
 import PizzaBrokGame from '../games/pizza-brok/PizzaBrokGame';
 import VektskalaGame from '../games/vektskala/VektskalaGame';
 import ButikkGame from '../games/butikk/ButikkGame';
+import AlgebraGame from '../games/algebra-verksted/AlgebraGame';
 import styles from './GameScreen.module.css';
 
 interface Props {
@@ -17,6 +18,7 @@ const GAME_TITLES: Record<GameId, string> = {
   'pizza-brok': 'Pizza-brøk',
   vektskala: 'Vektskåla',
   butikk: 'Butikk',
+  'algebra-verksted': 'Algebra-verksted',
 };
 
 function GameContent({ gameId, onGoHome }: { gameId: GameId; onGoHome: () => void }) {
@@ -25,6 +27,7 @@ function GameContent({ gameId, onGoHome }: { gameId: GameId; onGoHome: () => voi
   if (gameId === 'pizza-brok') return <PizzaBrokGame onGoHome={onGoHome} />;
   if (gameId === 'vektskala') return <VektskalaGame onGoHome={onGoHome} />;
   if (gameId === 'butikk') return <ButikkGame onGoHome={onGoHome} />;
+  if (gameId === 'algebra-verksted') return <AlgebraGame onGoHome={onGoHome} />;
   return null;
 }
 

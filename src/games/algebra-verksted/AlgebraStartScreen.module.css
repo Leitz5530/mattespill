@@ -1,0 +1,100 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(12px, 3vw, 18px);
+  padding: clamp(24px, 6dvh, 48px) clamp(20px, 5vw, 40px);
+  border-radius: var(--radius-card);
+  background: #eff6ff;
+  border: 3px dashed #2563eb;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.emoji {
+  font-size: clamp(48px, 14vw, 72px);
+}
+
+.heading {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.description {
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+  color: var(--color-text-light);
+  line-height: 1.5;
+}
+
+/* ---- Count selector ---- */
+
+.countSelector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.countLabel {
+  font-size: clamp(0.9rem, 2.8vw, 1rem);
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+.countButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.countBtn {
+  width: 64px;
+  height: 64px;
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  font-weight: 800;
+  border: 3px solid #ddd;
+  border-radius: 16px;
+  background: #fff;
+  color: var(--color-text-light);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.12s, background 0.12s, color 0.12s, transform 0.1s;
+  font-family: inherit;
+}
+
+.countBtn:active {
+  transform: scale(0.93);
+}
+
+.countBtnActive {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: #fff;
+}
+
+/* ---- Start button ---- */
+
+.startBtn {
+  margin-top: 8px;
+  padding: 16px 56px;
+  font-size: clamp(1.1rem, 4vw, 1.3rem);
+  font-weight: 800;
+  color: #fff;
+  background: #2563eb;
+  border: none;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+  transition: transform 0.1s, box-shadow 0.1s;
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
+.startBtn:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}

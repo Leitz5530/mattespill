@@ -92,3 +92,9 @@
   background: var(--color-secondary);
   color: #fff;
 }
+
+/* Shared illustrated game frame provides the setting. */
+.container { background: transparent; border: none; border-radius: 0; padding: 10px 0 15px; }
+.emoji { display: none; }
+.heading { color: var(--game-color); }
+.startBtn { background: var(--game-color); box-shadow: 0 4px 0 color-mix(in srgb, var(--game-color), black 20%); }

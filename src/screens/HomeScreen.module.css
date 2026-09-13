@@ -1,50 +1,27 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* dvh accounts for mobile browser chrome collapsing/expanding */
-  min-height: 100dvh;
-  padding: clamp(24px, 6dvh, 56px) clamp(16px, 5vw, 32px) clamp(32px, 8dvh, 64px);
-  gap: clamp(28px, 6dvh, 52px);
-}
-
-.header {
-  text-align: center;
-}
-
-.title {
-  font-size: clamp(2.5rem, 10vw, 4.5rem);
-  font-weight: 900;
-  color: var(--color-primary);
-  letter-spacing: -1px;
-  line-height: 1;
-}
-
-.subtitle {
-  margin-top: 10px;
-  font-size: clamp(1rem, 3.5vw, 1.25rem);
-  color: var(--color-text-light);
-  font-weight: 500;
-}
-
-/* CSS grid gives a predictable 1→2 column layout */
-.games {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(16px, 4vw, 28px);
-  width: 100%;
-  max-width: 680px;
-}
-
-@media (min-width: 520px) {
-  .games {
-    grid-template-columns: 1fr 1fr;
-  }
-  /* Last card spans full row when total is odd */
-  .games > *:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    max-width: 360px;
-    justify-self: center;
-    width: 100%;
-  }
-}
+.container { max-width: 1240px; width: 100%; margin: auto; padding: 0 40px; }
+.header { height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; color: #243e3a; font-size: 28px; font-weight: 850; letter-spacing: -1.2px; text-decoration: none; }
+.brand > span:last-child { color: #d96443; }
+.brandIcon { width: 43px; height: 43px; background: #287b68; color: white; display: inline-grid; place-items: center; border-radius: 15px 15px 15px 5px; margin-right: 10px; position: relative; font-size: 29px; }
+.brandIcon span { position: absolute; color: #ffd86b; right: -5px; top: -9px; font-size: 22px; }
+.helpButton { border: 1px solid #dedfd5; background: #fffdf8; color: #42564f; border-radius: 100px; padding: 11px 18px; font-weight: 650; display: flex; gap: 8px; }
+.help { background: #edf5ee; border: 1px solid #cee1d1; border-radius: 20px; padding: 24px; margin-bottom: 20px; line-height: 1.7; }
+.help h2 { font-size: 19px; }.help button { background: transparent; border: none; text-decoration: underline; color: #23634e; margin-top: 10px; }
+.hero { display: grid; grid-template-columns: 1fr 1fr; background: #f7eddd; border-radius: 32px; overflow: hidden; min-height: 410px; position: relative; }
+.heroCopy { padding: 46px 0 40px 42px; z-index: 1; }
+.eyebrow { display: block; font-size: 11px; font-weight: 800; letter-spacing: 1.8px; color: #59685a; }
+.heroCopy .eyebrow { color: #57775f; }.eyebrow > span { color: #ce8c2b; font-size: 17px; margin-right: 6px; }
+.hero h1 { font-size: clamp(36px, 4.2vw, 53px); letter-spacing: -2px; line-height: 1.12; margin-top: 19px; font-weight: 850; }
+.hero h1 span { color: #278068; }.hero p { font-size: 16px; line-height: 1.7; color: #617065; margin-top: 19px; }
+.primary { display: inline-flex; gap: 34px; align-items: center; margin-top: 24px; border-radius: 13px; padding: 15px 22px; color: white; background: #287b68; box-shadow: 0 4px 0 #195847; font-weight: 750; text-decoration: none; }
+.heroNote { font-size: 11px; color: #6b7568; margin-top: 19px; }.heroNote span { color: #287b68; margin-right: 6px; }
+.heroArt { position: relative; min-width: 0; overflow: hidden; }.heroArt img { width: 100%; height: 100%; object-fit: cover; object-position: 62% center; }
+.heroArt::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 60px; background: linear-gradient(90deg,#f7eddd,transparent); }
+.artBadge { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%) rotate(-3deg); white-space: nowrap; background: #fffdf5; padding: 12px 18px; border-radius: 12px; color: #526751; font-size: 12px; font-weight: 750; box-shadow: 0 5px 16px #594d3815; }.artBadge span { color: #de9d25; margin-right: 7px; }
+.library { padding-top: 44px; scroll-margin-top: 24px; }.sectionHeading { display: flex; justify-content: space-between; align-items: end; gap: 20px; }.sectionHeading h2 { margin-top: 8px; font-size: 29px; letter-spacing: -.8px; }.sectionHeading h2 span { color: #dda84c; font-size: 25px; margin-left: 5px; }.gameCount { color: #778078; font-size: 12px; margin-bottom: 5px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }.filters button { border: 1px solid #dedfd5; background: transparent; color: #58645b; border-radius: 100px; padding: 10px 17px; font-weight: 650; font-size: 12px; }.filters button[aria-pressed=true] { background: #2c7462; border-color: #2c7462; color: white; }
+.games { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 23px; }.resultCount { text-align: center; font-size: 11px; color: #717c70; margin-top: 18px; }
+.footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid #e8e7de; margin-top: 30px; padding: 25px 0 30px; font-size: 12px; color: #768073; }.footer strong { color: #596858; }.footer > span:last-child > span { color: #ce795e; }
+@media(max-width:900px) { .container { padding: 0 24px; }.heroCopy { padding: 32px 0 30px 28px; }.hero { min-height: 380px; }.games { gap: 16px; }.gameCount { display: none; } }
+@media(max-width:650px) { .container { padding: 0 18px; }.header { height: 78px; }.brand { font-size: 24px; }.helpButton { font-size: 12px; padding: 10px 13px; }.hero { grid-template-columns: 1fr; border-radius: 24px; }.heroCopy { padding: 29px 25px 18px; }.hero h1 { font-size: 39px; }.hero p { font-size: 14px; }.heroArt { height: 235px; }.heroArt::before { display: none; }.heroArt img { object-position: center 53%; }.artBadge { bottom: 16px; }.heroNote { margin-bottom: 0; }.library { padding-top: 30px; }.sectionHeading h2 { font-size: 26px; }.games { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; }.filters { gap: 7px; margin: 19px 0; }.filters button { padding: 10px 12px; font-size: 11px; }.eyebrow { font-size: 9px; letter-spacing: 1.3px; }.footer { font-size: 11px; } }
+@media(max-width:370px) { .games { grid-template-columns: 1fr; }.hero h1 { font-size: 34px; }.container { padding: 0 14px; } }

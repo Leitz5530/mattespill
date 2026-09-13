@@ -421,3 +421,12 @@
 .retryBtn:active {
   transform: scale(0.96);
 }
+
+/* A little grocery counter, with all amounts still rendered by the game. */
+.itemCard, .shopList { border: 1px solid #cde2ce; border-top: 12px solid #79ae80; background: #fffdf5; box-shadow: 0 5px 0 #e6dfcc; padding: 20px; }
+.paymentArea { background: #f5efe2; border: 2px dashed #c7bda2; padding: 16px; min-height: 110px; }
+.paymentLabel { color: #736449; }
+.emptyPayment { color: #756c59; }
+.moneyArea { background: #f0f6ed; border-radius: 18px; padding: 16px 10px; }
+.checkBtn, .nextBtn { background: #277352; box-shadow: 0 4px 0 #194d37; min-height: 48px; }
+.selectedIsNote { min-height: 44px; }

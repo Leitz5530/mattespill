@@ -49,3 +49,11 @@ button, a {
   /* Prevent double-tap zoom on buttons */
   touch-action: manipulation;
 }
+
+/* Shared, quiet canvas around the colorful learning objects. */
+:root { --color-bg: #faf9f3; --color-text: #293f36; --color-text-light: #627166; --color-primary: #c3513c; --color-secondary: #287b68; --shadow-card: 0 5px 20px #374c3510; --shadow-card-hover: 0 10px 26px #374c351c; --font-main: 'Trebuchet MS', 'Segoe UI', sans-serif; }
+button, input, select { font-family: inherit; }
+button { cursor: pointer; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #206eae; outline-offset: 4px; }
+button:disabled { cursor: default; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }

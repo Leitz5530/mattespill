@@ -6,6 +6,7 @@ import VektskalaGame from '../games/vektskala/VektskalaGame';
 import ButikkGame from '../games/butikk/ButikkGame';
 import AlgebraGame from '../games/algebra-verksted/AlgebraGame';
 import styles from './GameScreen.module.css';
+import { games, gameArt } from '../gameCatalog';
 
 interface Props {
   gameId: GameId;
@@ -32,18 +33,25 @@ function GameContent({ gameId, onGoHome }: { gameId: GameId; onGoHome: () => voi
 }
 
 export default function GameScreen({ gameId, onBack }: Props) {
+  const game = games.find(item => item.id === gameId)!;
   return (
-    <main className={styles.container}>
+    <main className={styles.container} style={{ '--game-color': game.color, '--game-tint': game.tint } as React.CSSProperties}>
       <header className={styles.header}>
         <button className={styles.backBtn} onClick={onBack} aria-label="Tilbake til startskjermen">
-          ← Tilbake
+          ← Alle spill
         </button>
         <h1 className={styles.title}>{GAME_TITLES[gameId]}</h1>
       </header>
 
-      <section className={styles.content}>
+      <div className={styles.layout}>
+      <aside className={styles.world}>
+        <img src={gameArt(gameId)} alt="" />
+        <div className={styles.worldCopy}><span>{game.skill}</span><h2>{game.action}</h2><p>{game.description}</p><div className={styles.encouragement}>✦ Små steg teller. Prøv deg frem!</div></div>
+      </aside>
+      <section className={styles.content} aria-label={game.title}>
         <GameContent gameId={gameId} onGoHome={onBack} />
       </section>
+      </div>
     </main>
   );
 }

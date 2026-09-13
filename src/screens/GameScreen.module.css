@@ -1,67 +1,9 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
-  padding: clamp(16px, 4dvh, 32px) clamp(16px, 5vw, 28px) clamp(32px, 6dvh, 64px);
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: clamp(24px, 5dvh, 48px);
-}
-
-.backBtn {
-  background: #fff;
-  border: 2px solid var(--color-primary);
-  color: var(--color-primary);
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 700;
-  /* Minimum 44px touch target height */
-  min-height: 44px;
-  padding: 0 20px;
-  border-radius: var(--radius-btn);
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-/* Keep hover as progressive enhancement — not required for interaction */
-@media (hover: hover) {
-  .backBtn:hover {
-    background: var(--color-primary);
-    color: #fff;
-  }
-}
-
-.backBtn:focus-visible {
-  outline: 3px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-.backBtn:active {
-  background: var(--color-primary);
-  color: #fff;
-}
-
-.title {
-  font-size: clamp(1.25rem, 5vw, 2rem);
-  font-weight: 900;
-  color: var(--color-text);
-  /* Prevent title from pushing button off-screen on very narrow phones */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-  /* Required so flex children with flex: 1 can fill height without overflow */
-  min-height: 0;
-}
+.container { width: 100%; max-width: 1240px; margin: 0 auto; min-height: 100dvh; padding: 26px 40px 48px; }
+.header { display: flex; align-items: center; gap: 22px; margin-bottom: 30px; }
+.backBtn { background: #fffefa; border: 1px solid #dedfd5; color: #36594a; font-family: inherit; font-size: 14px; font-weight: 700; min-height: 46px; padding: 0 20px; border-radius: 100px; cursor: pointer; white-space: nowrap; }
+.title { font-size: clamp(20px,3vw,29px); letter-spacing: -.6px; font-weight: 800; color: var(--game-color); }
+.layout { display: grid; grid-template-columns: minmax(220px, .75fr) minmax(0,1.4fr); gap: 36px; align-items: start; }
+.world { background: var(--game-tint); border-radius: 25px; overflow: hidden; position: sticky; top: 24px; }.world img { display: block; width: 100%; aspect-ratio: 1.25; object-fit: cover; }.worldCopy { padding: 26px; }.worldCopy > span { text-transform: uppercase; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; color: var(--game-color); }.worldCopy h2 { font-size: 27px; margin: 10px 0; letter-spacing: -.8px; }.worldCopy p { color: #617064; line-height: 1.7; font-size: 14px; }.encouragement { border-top: 1px solid #748d6925; margin-top: 26px; padding-top: 18px; font-size: 12px; color: var(--game-color); font-weight: 700; }
+.content { display: flex; flex-direction: column; align-items: center; min-width: 0; min-height: 0; border: 1px solid #e5e6dc; border-radius: 25px; background: #fffefa; padding: 25px; box-shadow: 0 5px 20px #35452e06; }
+@media(max-width:800px) { .container { padding: 20px; }.layout { grid-template-columns: 1fr; gap: 18px; }.world { position: static; display: flex; align-items: center; }.world img { width: 125px; height: 115px; object-fit: cover; flex-shrink: 0; }.worldCopy { padding: 14px 18px; }.worldCopy h2 { font-size: 21px; margin: 5px 0; }.worldCopy p, .encouragement { display: none; }.content { padding: 18px; }.header { margin-bottom: 18px; gap: 14px; }.title { font-size: 21px; } }
+@media(max-width:400px) { .container { padding: 15px 12px 30px; }.content { padding: 12px 8px; }.title { font-size: 18px; }.backBtn { font-size: 12px; padding: 0 13px; }.worldCopy h2 { font-size: 19px; } }
